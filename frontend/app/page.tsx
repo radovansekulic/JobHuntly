@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Header from "@/app/components/Header";
 
 export default function Home() {
   const [token, setToken] = useState("");
@@ -41,7 +42,7 @@ export default function Home() {
     <div className="bg-white">
       {token ? (
         <>
-          {JSON.stringify(userData, null, 2)}
+          <Header />
         </>
       ) : (
         <>
