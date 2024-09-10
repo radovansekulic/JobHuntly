@@ -1,7 +1,20 @@
+"use client"
+
+import Link from 'next/link';
+import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
 
-export default function Home() {
+export default function Header() {
     const router = useRouter();
+    const [userId, setUserId] = useState(null);
+
+    useEffect(() => {
+        const userData = localStorage.getItem("userData");
+        if (userData) {
+            const userDataObj = JSON.parse(userData);
+            setUserId(userDataObj._id);
+        }
+    }, []);
 
     const handleLogout = () => {
         localStorage.removeItem("token");
@@ -71,7 +84,7 @@ export default function Home() {
                 <nav className="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
                     { /* <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-900 hover:bg-gray-50 hover:text-gray-900" --> */}
                     <a href="#" className="bg-gray-100 text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Find Work</a>
-                    <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Post Job</a>
+                    <Link href={`/create/${userId}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">Post Job</Link>
                     <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Dashboard</a>
                     <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Jobs</a>
                 </nav>
@@ -82,7 +95,7 @@ export default function Home() {
                 <div className="space-y-1 px-2 pb-3 pt-2">
                     { /* <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-900 hover:bg-gray-50 hover:text-gray-900" --> */}
                     <a href="#" className="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium" aria-current="page">Find Work</a>
-                    <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">Post Job</a>
+                    <Link href={`/create/${userId}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">Post Job</Link>
                     <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">Dashboard</a>
                     <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">My Jobs</a>
                 </div>
