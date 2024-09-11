@@ -1,13 +1,21 @@
 "use client"
 
 import { useState } from "react";
-import Header from "../../components/Header";
+import { useRouter } from "next/navigation";
 import axios from "axios";
+import Header from "../../../components/Header";
+import Alert from "@/app/components/Alert";
 
-export default function Create({ params }: { params: { id: number } }) {
-    
+export default function Create({ params }: {
+    params:
+    { id: number, nickname: string }
+}) {
+    const router = useRouter();
+    const [message, setMessage] = useState("");
+
     const [formData, setFormData] = useState({
         userId: params.id,
+        nickname: params.nickname,
         title: '',
         description: '',
         price: ''
@@ -22,21 +30,25 @@ export default function Create({ params }: { params: { id: number } }) {
         const token = localStorage.getItem('token');
 
         try {
-            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/create`, formData ,{
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/create`, formData, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Accept': 'application/json',
-                  },
+                },
             });
-            console.log('Job created successfully:', res.data);
+            router.push('/');
+
         } catch (error) {
-            console.error('Error creating job:', error);
+            setMessage("Error creating job")
         }
     };
 
     return (
         <div>
             <Header />
+            <div className={message ? '' : 'hidden'}>
+                <Alert message={message} />
+            </div>
             <form onSubmit={handleSubmit} className="container md:max-w-2xl mt-20 px-4 mx-auto">
                 <div className="space-y-12 sm:space-y-16">
                     <div>

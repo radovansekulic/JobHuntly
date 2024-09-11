@@ -7,12 +7,14 @@ import { useRouter } from 'next/navigation';
 export default function Header() {
     const router = useRouter();
     const [userId, setUserId] = useState(null);
+    const [nickname, setNickname] = useState(null);
 
     useEffect(() => {
         const userData = localStorage.getItem("userData");
         if (userData) {
             const userDataObj = JSON.parse(userData);
             setUserId(userDataObj._id);
+            setNickname(userDataObj.nickname);
         }
     }, []);
 
@@ -83,10 +85,10 @@ export default function Header() {
                 </div>
                 <nav className="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
                     { /* <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-900 hover:bg-gray-50 hover:text-gray-900" --> */}
-                    <a href="#" className="bg-gray-100 text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">Find Work</a>
-                    <Link href={`/create/${userId}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">Post Job</Link>
-                    <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Dashboard</a>
-                    <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">My Jobs</a>
+                    <Link href={`/`} className="bg-gray-100 text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">FIND WORK</Link>
+                    <Link href={`/create/${userId}/${nickname}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">POST JOB</Link>
+                    <Link href={`/dashboard/${userId}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">MY POSTED JOBS</Link>
+                    <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">MY JOBS APPLICATIONS</a>
                 </nav>
             </div>
 
@@ -94,10 +96,10 @@ export default function Header() {
             <nav className="lg:hidden" aria-label="Global" id="mobile-menu">
                 <div className="space-y-1 px-2 pb-3 pt-2">
                     { /* <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-900 hover:bg-gray-50 hover:text-gray-900" --> */}
-                    <a href="#" className="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium" aria-current="page">Find Work</a>
-                    <Link href={`/create/${userId}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">Post Job</Link>
-                    <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">Dashboard</a>
-                    <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">My Jobs</a>
+                    <Link href={`/`} className="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium" aria-current="page">FIND WORK</Link>
+                    <Link href={`/create/${userId}/${nickname}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">POST JOB</Link>
+                    <Link href={`/dashboard/${userId}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">MY POSTED JOBS</Link>
+                    <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">MY JOB APPLICATIONS</a>
                 </div>
                 <div className="border-t border-gray-200 pb-3 pt-4">
                     <div className="flex items-center px-4">

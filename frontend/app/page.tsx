@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Header from "@/app/components/Header";
+import Jobs from "@/app/components/Jobs";
 
 export default function Home() {
   const [token, setToken] = useState("");
@@ -43,6 +44,7 @@ export default function Home() {
       {token ? (
         <>
           <Header />
+          <Jobs />
         </>
       ) : (
         <>

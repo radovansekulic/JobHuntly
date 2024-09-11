@@ -9,5 +9,7 @@ router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 router.get('/user', AuthenticateToken, UserController.getUser);
 router.post('/create', AuthenticateToken, JobController.createJob);
+router.get('/jobs', AuthenticateToken, JobController.getJobs);
+router.get('/myJobs/:id', AuthenticateToken, JobController.myJobs);
 
 module.exports = router;
