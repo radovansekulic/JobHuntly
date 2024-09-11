@@ -45,4 +45,13 @@ const myJobs = async (req, res) => {
     }
 };
 
-module.exports = { createJob, getJobs, myJobs }
+const getJob = async (req, res) => {
+    try {
+        res.status(200).json(await Job.findById(req.params.id));
+
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+module.exports = { createJob, getJobs, myJobs, getJob }
