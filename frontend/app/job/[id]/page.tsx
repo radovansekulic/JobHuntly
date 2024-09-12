@@ -31,6 +31,7 @@ export default function Dashboard({ params }: { params: { id: number } }) {
     const [dataOffer, setDataOffer] = useState<OfferDta | null>(null);
 
     const [formData, setFormData] = useState({
+        userId: '',
         nickname: '',
         email: '',
         description: '',
@@ -48,6 +49,7 @@ export default function Dashboard({ params }: { params: { id: number } }) {
             setFormData({
                 ...formData,
                 nickname: userDataObj.nickname,
+                userId: userDataObj._id,
                 email: userDataObj.email
             });
         }
@@ -92,7 +94,7 @@ export default function Dashboard({ params }: { params: { id: number } }) {
                 },
             });
             setMessage("Offer created successfully");
-            router.push('/job/' + params.id);
+            window.location.reload();
         } catch (error) {
             setMessage("Error creating Offer");
         }

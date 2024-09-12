@@ -44,6 +44,7 @@ export default function Home() {
       {token ? (
         <>
           <Header />
+          <h1 className="text-4xl container max-w-4xl mx-auto text-bold my-20">FIND WORK 👇</h1>
           <Jobs />
         </>
       ) : (

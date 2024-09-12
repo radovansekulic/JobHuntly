@@ -31,22 +31,25 @@ export default function Dashboard({ params }: { params: { id: number } }) {
     return (
         <div>
             <Header />
-            <section className="mt-32 container mx-auto max-w-4xl">
+            <h1 className="text-4xl container px-4 max-w-4xl mx-auto text-bold my-10">MY POSTED JOBS 👇</h1>
+            <section className="mt-20 container md:grid grid-cols-2 px-4 gap-10 mx-auto max-w-4xl">
                 {data.map((item) => (
-                    <Link href="#" key={item["_id"]}>
-                        <div className="p-5 border mb-10 rounded-xl">
-                            <div className="flex justify-between">
-                                <div>
-                                    <h1 className="text-xl font-semibold mb-2">👋 {item["nickname"]}</h1>
-                                    <h1 className="text-lg mb-5">{item["title"]}</h1>
+                    <div className="w-full">
+                        <Link href={`/job/${item["_id"]}`} key={item["_id"]}>
+                            <div className="p-5 border mb-10 rounded-xl">
+                                <div className="flex justify-between">
+                                    <div>
+                                        <h1 className="text-xl font-semibold mb-2">👋 {item["nickname"]}</h1>
+                                        <h1 className="text-lg mb-5">{item["title"]}</h1>
+                                    </div>
+                                    <div>
+                                        <button className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">VIEW PROPOSALS</button>
+                                    </div>
                                 </div>
-                                <div>
-                                    <button className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">START PRICE - {item["price"]}$</button>
-                                </div>
+                                <p>{item["description"]}</p>
                             </div>
-                            <p>{item["description"]}</p>
-                        </div>
-                    </Link>
+                        </Link>
+                    </div>
                 ))}
             </section>
         </div>

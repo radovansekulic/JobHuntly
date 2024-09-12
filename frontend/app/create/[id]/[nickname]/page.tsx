@@ -52,7 +52,7 @@ export default function Create({ params }: {
             <form onSubmit={handleSubmit} className="container md:max-w-2xl mt-20 px-4 mx-auto">
                 <div className="space-y-12 sm:space-y-16">
                     <div>
-                        <h2 className="text-base font-semibold leading-7 text-gray-900">Post Job</h2>
+                    <h1 className="text-4xl container max-w-4xl mx-auto text-bold my-10">POST JOB 👇</h1>
                         <div className="mt-10 space-y-8 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0">
                             <div className="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
                                 <label htmlFor="title" className="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5">Title</label>

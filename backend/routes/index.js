@@ -17,5 +17,6 @@ router.get('/getJob/:id', AuthenticateToken, JobController.getJob);
 
 router.post('/offer/:id', AuthenticateToken, OfferController.createOffer);
 router.get('/getOffers/:id', AuthenticateToken, OfferController.getOffers);
+router.get('/work/:id', AuthenticateToken, OfferController.getJobs);
 
 module.exports = router;

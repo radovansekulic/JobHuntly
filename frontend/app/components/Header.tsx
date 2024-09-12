@@ -88,7 +88,7 @@ export default function Header() {
                     <Link href={`/`} className="bg-gray-100 text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" aria-current="page">FIND WORK</Link>
                     <Link href={`/create/${userId}/${nickname}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">POST JOB</Link>
                     <Link href={`/dashboard/${userId}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">MY POSTED JOBS</Link>
-                    <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">MY JOBS APPLICATIONS</a>
+                    <Link href={`/work/${userId}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">MY JOBS APPLICATIONS</Link>
                 </nav>
             </div>
 
@@ -99,7 +99,7 @@ export default function Header() {
                     <Link href={`/`} className="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium" aria-current="page">FIND WORK</Link>
                     <Link href={`/create/${userId}/${nickname}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">POST JOB</Link>
                     <Link href={`/dashboard/${userId}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">MY POSTED JOBS</Link>
-                    <a href="#" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">MY JOB APPLICATIONS</a>
+                    <Link href={`/work/${userId}`} className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium">MY JOB APPLICATIONS</Link>
                 </div>
                 <div className="border-t border-gray-200 pb-3 pt-4">
                     <div className="flex items-center px-4">
