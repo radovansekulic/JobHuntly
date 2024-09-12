@@ -1,6 +1,7 @@
 "use client"
 
 import Link from 'next/link';
+import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation';
 
@@ -23,6 +24,19 @@ export default function Header() {
         localStorage.removeItem("userData");
         router.push('/login');
     };
+
+    const deleteAccount = () => {
+        try {
+            axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/delete/${userId}`);
+
+            localStorage.removeItem("token");
+            localStorage.removeItem("userData");
+            router.push('/login');
+
+        } catch (err) {
+            console.error("Failed to fetch data:", err);
+        }
+    }
 
     return (
         <header className="bg-white shadow">
@@ -76,7 +90,7 @@ export default function Header() {
 
                             <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
                                 { /* <!-- Active: "bg-gray-100", Not Active: "" --> */}
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" id="user-menu-item-0">Your Profile</a>
+                                <a href="#" onClick={deleteAccount} className="block px-4 py-2 text-sm text-rose-700" role="menuitem" id="user-menu-item-0">DELETE ACCOUNT</a>
                                 <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" id="user-menu-item-1">Settings</a>
                                 <a href="#" onClick={handleLogout} className="block px-4 py-2 text-sm bg-rose-500 text-white" role="menuitem" id="user-menu-item-2">Sign out</a>
                             </div>
@@ -118,7 +132,7 @@ export default function Header() {
                         </button>
                     </div>
                     <div className="mt-3 space-y-1 px-2">
-                        <a href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Your Profile</a>
+                        <a href="#" onClick={deleteAccount} className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">DELETE ACCOUNT</a>
                         <a href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Settings</a>
                         <a href="#" className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900">Sign out</a>
                     </div>

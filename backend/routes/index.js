@@ -8,6 +8,7 @@ const AuthenticateToken = require('../app/middlewares/AuthenticateToken');
 
 router.post('/register', UserController.register);
 router.post('/login', UserController.login);
+router.post('/delete/:id', UserController.deleteUser);
 
 router.get('/user', AuthenticateToken, UserController.getUser);
 router.post('/create', AuthenticateToken, JobController.createJob);
